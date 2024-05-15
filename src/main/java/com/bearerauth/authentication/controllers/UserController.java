@@ -24,7 +24,10 @@ import com.bearerauth.authentication.entities.User;
 import com.bearerauth.authentication.helper.JwtHelper;
 import com.bearerauth.authentication.services.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
+@SecurityRequirement(name = "BearerAuth")
 public class UserController {
 
     @Autowired
