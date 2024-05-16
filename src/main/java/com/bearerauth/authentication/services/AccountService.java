@@ -22,7 +22,7 @@ public class AccountService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User createAdmin(UserDao userDao) {
+    public User registerAdmin(UserDao userDao) {
         User user = new User();
         user.setName(userDao.getName());
         user.setEmail(userDao.getEmail());
@@ -32,11 +32,11 @@ public class AccountService {
         return userData;
     }
 
-    public List<User> getUsers() {
+    public List<User> getAllUsers() {
         return accountRepository.findAll();
     }
 
-    public User createUser(UserDao userDao) {
+    public User registerUser(UserDao userDao) {
         User user = new User();
         user.setName(userDao.getName());
         user.setEmail(userDao.getEmail());

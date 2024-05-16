@@ -43,13 +43,13 @@ public class AccountController {
     private AuthenticationManager manager;
 
     @PostMapping("/auth/createAdmin")
-    public User CreateAdmin(@RequestBody UserDao userDao) {
-        return accountService.createAdmin(userDao);
+    public User registerAdmin(@RequestBody UserDao userDao) {
+        return accountService.registerAdmin(userDao);
     }
 
-    @PostMapping("/auth/createUser")
-    public User createUser(@RequestBody UserDao userDao) {
-        return accountService.createUser(userDao);
+    @PostMapping("/auth/registerUser")
+    public User registerUser(@RequestBody UserDao userDao) {
+        return accountService.registerUser(userDao);
     }
 
     @PostMapping("/auth/login")
@@ -66,7 +66,7 @@ public class AccountController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/auth/login-admin")
+    @PostMapping("/auth/loginAdmin")
     public ResponseEntity<JwtResponse> loginAdmin(@RequestBody JwtRequest request) {
         Optional<User> loginAdmin = accountService.loginAdmin(request);
         if (loginAdmin.isEmpty()) {
@@ -85,9 +85,9 @@ public class AccountController {
 
     }
 
-    @GetMapping("/getAllUsers")
-    public List<User> getUsers() {
-        return accountService.getUsers();
+    @GetMapping("/auth/getAllUsers")
+    public List<User> getAllUsers() {
+        return accountService.getAllUsers();
     }
 
     private void doAuthenticate(String email, String password) {

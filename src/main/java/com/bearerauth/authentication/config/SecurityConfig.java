@@ -36,11 +36,11 @@ public class SecurityConfig {
 
         http.csrf(csrf -> csrf.disable()).cors(cors -> cors.disable())
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/getAllUsers").authenticated()
+                        .requestMatchers("/auth/getAllUsers").authenticated()
                         .requestMatchers("/auth/login").permitAll()
-                        .requestMatchers("/auth/login-admin").permitAll()
-                        .requestMatchers("/auth/createUser").permitAll()
-                        .requestMatchers("/auth/createAdmin").hasAuthority("ADMIN")
+                        .requestMatchers("/auth/loginAdmin").permitAll()
+                        .requestMatchers("/auth/registerUser").permitAll()
+                        .requestMatchers("/auth/registerAdmin").hasAuthority("ADMIN")
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**")
                         .permitAll()
                         .requestMatchers("/**").permitAll()
